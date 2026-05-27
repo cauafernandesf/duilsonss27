@@ -9,9 +9,31 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// =====================================
+// CORS
+// =====================================
+
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
 
 app.use(express.json());
+
+// =====================================
+// HEALTH CHECK
+// =====================================
+
+app.get("/", (req, res) => {
+
+  res.send("Backend online");
+
+});
+
+// =====================================
+// GENERATE FILES
+// =====================================
 
 app.post("/generate-files", async (req, res) => {
 
@@ -121,7 +143,7 @@ app.post("/generate-files", async (req, res) => {
     });
 
     res.json({
-      success:true,
+      success: true,
       excel: excelBuffer.toString("base64"),
       pdf: pdfBuffer.toString("base64")
     });
@@ -131,13 +153,17 @@ app.post("/generate-files", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      success:false,
-      error:error.message
+      success: false,
+      error: error.message
     });
 
   }
 
 });
+
+// =====================================
+// SEND EMAIL
+// =====================================
 
 app.post("/send-email", async (req, res) => {
 
@@ -310,7 +336,7 @@ Segue em anexo o sortimento selecionado.
     });
 
     res.json({
-      success:true
+      success: true
     });
 
   } catch (error) {
@@ -318,13 +344,22 @@ Segue em anexo o sortimento selecionado.
     console.log(error);
 
     res.status(500).json({
-      success:false,
-      error:error.message
+      success: false,
+      error: error.message
     });
 
   }
 
 });
 
+// =====================================
+// PORTA
+// =====================================
 
-export default app;
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+
+  console.log(`Servidor rodando na porta ${PORT}`);
+
+});
