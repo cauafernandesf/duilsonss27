@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import ExcelJS from "exceljs";
 import PDFDocument from "pdfkit";
-import fs from "fs";
 
 dotenv.config();
 
@@ -21,7 +20,7 @@ app.post("/generate-files", async (req, res) => {
     const { customerData, products } = req.body;
 
     // =========================
-    // EXCEL
+    // EXCEL EM MEMÓRIA
     // =========================
 
     const workbook = new ExcelJS.Workbook();
@@ -50,25 +49,27 @@ app.post("/generate-files", async (req, res) => {
 
     });
 
-    await workbook.xlsx.writeFile(
-      "sortimento.xlsx"
-    );
+    const excelBuffer = await workbook.xlsx.writeBuffer();
 
     // =========================
-    // PDF
+    // PDF EM MEMÓRIA
     // =========================
 
-    await new Promise((resolve) => {
+    const pdfBuffer = await new Promise((resolve) => {
 
       const doc = new PDFDocument({
         margin: 40
       });
 
-      const stream = fs.createWriteStream(
-        "sortimento.pdf"
-      );
+      const buffers = [];
 
-      doc.pipe(stream);
+      doc.on("data", buffers.push.bind(buffers));
+
+      doc.on("end", () => {
+
+        resolve(Buffer.concat(buffers));
+
+      });
 
       doc
         .fontSize(22)
@@ -117,12 +118,12 @@ app.post("/generate-files", async (req, res) => {
 
       doc.end();
 
-      stream.on("finish", resolve);
-
     });
 
     res.json({
-      success:true
+      success:true,
+      excel: excelBuffer.toString("base64"),
+      pdf: pdfBuffer.toString("base64")
     });
 
   } catch (error) {
@@ -142,7 +143,115 @@ app.post("/send-email", async (req, res) => {
 
   try {
 
-    const { customerData } = req.body;
+    const {
+      customerData,
+      products
+    } = req.body;
+
+    // =========================
+    // EXCEL EM MEMÓRIA
+    // =========================
+
+    const workbook = new ExcelJS.Workbook();
+
+    const sheet = workbook.addWorksheet("Produtos");
+
+    sheet.columns = [
+
+      { header: "Código", key: "code", width: 20 },
+
+      { header: "Descrição", key: "descricao", width: 40 },
+
+      { header: "Tipo", key: "tipo", width: 20 },
+
+      { header: "Gênero", key: "genero", width: 20 },
+
+      { header: "PDV", key: "pdv", width: 20 },
+
+      { header: "Avaliação", key: "rating", width: 20 }
+
+    ];
+
+    products.forEach((product) => {
+
+      sheet.addRow(product);
+
+    });
+
+    const excelBuffer = await workbook.xlsx.writeBuffer();
+
+    // =========================
+    // PDF EM MEMÓRIA
+    // =========================
+
+    const pdfBuffer = await new Promise((resolve) => {
+
+      const doc = new PDFDocument({
+        margin: 40
+      });
+
+      const buffers = [];
+
+      doc.on("data", buffers.push.bind(buffers));
+
+      doc.on("end", () => {
+
+        resolve(Buffer.concat(buffers));
+
+      });
+
+      doc
+        .fontSize(22)
+        .fillColor("black")
+        .text(
+          "SORTIMENTO DUILSON SS27",
+          {
+            align: "center"
+          }
+        );
+
+      doc.moveDown();
+
+      doc
+        .fontSize(12)
+        .text(`RAZÃO SOCIAL: ${customerData.razaoSocial}`);
+
+      doc.text(`CNPJ: ${customerData.cnpj}`);
+
+      doc.text(`NOME DO RESPONSÁVEL: ${customerData.responsavel}`);
+
+      doc.text(`TELEFONE: ${customerData.telefone}`);
+
+      doc.text(`E-MAIL: ${customerData.email}`);
+
+      doc.moveDown();
+
+      doc
+        .fontSize(14)
+        .fillColor("black")
+        .text("PRODUTOS");
+
+      doc.moveDown();
+
+      products.forEach((product) => {
+
+        doc
+          .fontSize(11)
+          .text(
+            `${product.code} | ${product.descricao} | ${product.tipo} | ${product.genero} | PDV ${product.pdv} | ${product.rating}`
+          );
+
+        doc.moveDown(0.5);
+
+      });
+
+      doc.end();
+
+    });
+
+    // =========================
+    // EMAIL
+    // =========================
 
     const transporter = nodemailer.createTransport({
 
@@ -164,11 +273,7 @@ app.post("/send-email", async (req, res) => {
 
       to: [
         customerData.email,
-        "atendimento.puma@gmail.com"
-      ],
-
-      to: [
-        customerData.email,
+        "atendimento.puma@gmail.com",
         "rep.vetor@gmail.com"
       ],
 
@@ -192,12 +297,12 @@ Segue em anexo o sortimento selecionado.
 
         {
           filename: "sortimento.xlsx",
-          path: "./sortimento.xlsx"
+          content: excelBuffer
         },
 
         {
           filename: "sortimento.pdf",
-          path: "./sortimento.pdf"
+          content: pdfBuffer
         }
 
       ]
@@ -221,10 +326,10 @@ Segue em anexo o sortimento selecionado.
 
 });
 
-app.use("/downloads", express.static("./"));
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
 
-  console.log("Servidor rodando");
+  console.log(`Servidor rodando na porta ${PORT}`);
 
 });
