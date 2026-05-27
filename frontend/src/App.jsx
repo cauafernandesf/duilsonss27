@@ -32,6 +32,12 @@ export default function App() {
     }
   ]);
 
+  // =====================================
+  // URL DO BACKEND ONLINE
+  // =====================================
+
+  const API_URL = "https://SEU-BACKEND.up.railway.app";
+
   const formatCNPJ = (value) => {
 
     value = value.replace(/\D/g, "");
@@ -128,17 +134,14 @@ export default function App() {
     try {
 
       await axios.post(
-        "http://localhost:5000/generate-files",
+        `${API_URL}/generate-excel`,
         {
           customerData,
           products
         }
       );
 
-      window.open(
-        "http://localhost:5000/downloads/sortimento.xlsx",
-        "_blank"
-      );
+      alert("Excel gerado com sucesso");
 
     } catch (error) {
 
@@ -169,17 +172,14 @@ export default function App() {
     try {
 
       await axios.post(
-        "http://localhost:5000/generate-files",
+        `${API_URL}/generate-pdf`,
         {
           customerData,
           products
         }
       );
 
-      window.open(
-        "http://localhost:5000/downloads/sortimento.pdf",
-        "_blank"
-      );
+      alert("PDF gerado com sucesso");
 
     } catch (error) {
 
@@ -208,27 +208,15 @@ export default function App() {
     }
 
     const confirmacao = window.confirm(
-      "Deseja enviar sua escolha ao representante?"
+      "A cópia será enviada ao seu email, clique em OK e aguarde a segunda confirmação"
     );
 
     if (!confirmacao) return;
 
     try {
 
-      // GERA ARQUIVOS PRIMEIRO
-
       await axios.post(
-        "http://localhost:5000/generate-files",
-        {
-          customerData,
-          products
-        }
-      );
-
-      // ENVIA EMAIL
-
-      await axios.post(
-        "http://localhost:5000/send-email",
+        `${API_URL}/send-email`,
         {
           customerData,
           products
@@ -267,7 +255,7 @@ export default function App() {
             className="gmail"
             onClick={sendEmail}
           >
-            Enviar no e-mail
+            Salvar
           </button>
 
         </div>
