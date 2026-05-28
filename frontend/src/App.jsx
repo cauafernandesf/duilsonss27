@@ -16,22 +16,638 @@ export default function App() {
   const [products, setProducts] = useState([
     {
       code: "312944",
-      descricao: "Velocity Nitro 5",
+      descricao: "Velocity NITRO 5",
       tipo: "Running",
       genero: "Masculino",
       pdv: "999,99",
       rating: ""
     },
-    {
+{
+      code: "312945",
+      descricao: "Velocity NITRO 5 Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "999,99",
+      rating: ""
+    },
+{
+      code: "313486",
+      descricao: "Action Pro TR",
+      tipo: "Training",
+      genero: "Unissex",
+      pdv: "699,99",
+      rating: ""
+    },
+{
+      code: "313533",
+      descricao: "Action Pro TR Wns",
+      tipo: "Training",
+      genero: "Feminino",
+      pdv: "699,99",
+      rating: ""
+    },
+{
+      code: "313739",
+      descricao: "Agile Lite TR",
+      tipo: "Training",
+      genero: "Unissex",
+      pdv: "499,99",
+      rating: ""
+    },
+{
+      code: "313313",
+      descricao: "Maxima Pro",
+      tipo: "Running",
+      genero: "Unissex",
+      pdv: "599,99",
+      rating: ""
+    },
+{
+      code: "314358",
+      descricao: "Unleash Pro",
+      tipo: "Running",
+      genero: "Unissex",
+      pdv: "599,99",
+      rating: ""
+    },
+{
+      code: "314402",
+      descricao: "Unleash Pro Rhythm",
+      tipo: "Running",
+      genero: "Unissex",
+      pdv: "599,99",
+      rating: ""
+    },
+{
+      code: "313498",
+      descricao: "Scend Pro 3",
+      tipo: "Running",
+      genero: "Unissex",
+      pdv: "499,99",
+      rating: ""
+    },
+{
+      code: "313499",
+      descricao: "Scend Pro 3 Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "499,99",
+      rating: ""
+    },
+{
+      code: "314355",
+      descricao: "Skyrocket Lite 2 Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "379,99",
+      rating: ""
+    },
+{
+      code: "314356",
+      descricao: "Skyrocket Lite 2",
+      tipo: "Running",
+      genero: "Masculino",
+      pdv: "379,99",
+      rating: ""
+    },
+{
+      code: "312123",
+      descricao: "MagMax NITRO",
+      tipo: "Running",
+      genero: "Masculino",
+      pdv: "1.399,99",
+      rating: ""
+    },
+{
+      code: "312126",
+      descricao: "MagMax NITRO Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "1.399,99",
+      rating: ""
+    },
+{
+      code: "311996",
+      descricao: "Deviate NITRO 3",
+      tipo: "Running",
+      genero: "Masculino",
+      pdv: "1.299,99",
+      rating: ""
+    },
+{
+      code: "311997",
+      descricao: "Deviate NITRO 3 Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "1.299,99",
+      rating: ""
+    },
+{
+      code: "311998",
+      descricao: "ForeverRun NITRO 2",
+      tipo: "Running",
+      genero: "Masculino",
+      pdv: "1.099,99",
+      rating: ""
+    },
+{
+      code: "311999",
+      descricao: "ForeverRun NITRO 2 Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "1.099,99",
+      rating: ""
+    },
+{
+      code: "312870",
+      descricao: "Reflect Lite Trail",
+      tipo: "Running",
+      genero: "Masculino",
+      pdv: "699,99",
+      rating: ""
+    },
+{
+      code: "312871",
+      descricao: "Reflect Lite Trail Wns",
+      tipo: "Running",
+      genero: "Feminino",
+      pdv: "699,99",
+      rating: ""
+    },
+{
       code: "403840",
       descricao: "Shuffle Downtown",
       tipo: "Casual",
       genero: "Masculino",
       pdv: "449,99",
       rating: ""
-    }
-  ]);
+    },
 
+{
+  code: "404134",
+  descricao: "Rebound v6 Low BDP",
+  tipo: "Core",
+  genero: "Male",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "399666",
+  descricao: "ST Runner v4 Mesh",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "397447",
+  descricao: "Puma Club II Era",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "407170",
+  descricao: "Puma Club LT",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "411774",
+  descricao: "Carina Mary Jane",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "314379",
+  descricao: "Softride Dani Slip On Wns",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "400718",
+  descricao: "Puma Club Klassika SD",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "406644",
+  descricao: "CC Park Vulc",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "499,99",
+  rating: ""
+},
+{
+  code: "408796",
+  descricao: "Rebound Femme Low BDP",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "499,99",
+  rating: ""
+},
+{
+  code: "405885",
+  descricao: "Carina 3.0 BDP",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "405899",
+  descricao: "Carina 3.0 SD BDP",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "408406",
+  descricao: "Court Classic Clean SD BDP",
+  tipo: "Core",
+  genero: "Male",
+  pdv: "379,99",
+  rating: ""
+},
+{
+  code: "408407",
+  descricao: "Court Lally SD BDP",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "379,99",
+  rating: ""
+},
+{
+  code: "404439",
+  descricao: "Court Lally BDP",
+  tipo: "Core",
+  genero: "Female",
+  pdv: "349,99",
+  rating: ""
+},
+{
+  code: "404440",
+  descricao: "Court Classic Clean BDP",
+  tipo: "Core",
+  genero: "Male",
+  pdv: "349,99",
+  rating: ""
+},
+{
+  code: "410089",
+  descricao: "Puma Serve Buck",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "379,99",
+  rating: ""
+},
+{
+  code: "407188",
+  descricao: "Puma Serve",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "349,99",
+  rating: ""
+},
+{
+  code: "409428",
+  descricao: "Softride ZeroG Slide LT",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "229,99",
+  rating: ""
+},
+{
+  code: "399706",
+  descricao: "Leadcat 2.0",
+  tipo: "Core",
+  genero: "Unisex",
+  pdv: "179,99",
+  rating: ""
+},
+{
+  code: "394254",
+  descricao: "Puma Rickie Classic V Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "279,99",
+  rating: ""
+},
+{
+  code: "394253",
+  descricao: "Puma Rickie Classic V PS",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "394252",
+  descricao: "Puma Rickie Classic JR",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "349,99",
+  rating: ""
+},
+{
+  code: "314732",
+  descricao: "Sky Runner Slip On Bold Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "299,99",
+  rating: ""
+},
+{
+  code: "314733",
+  descricao: "Sky Runner Slip On Bold PS",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "399741",
+  descricao: "ST Runner v4 NL V Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "314715",
+  descricao: "FlexFocus 2 AC+ Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "299,99",
+  rating: ""
+},
+{
+  code: "314046",
+  descricao: "Flyer 4 AC+ Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "299,99",
+  rating: ""
+},
+{
+  code: "312415",
+  descricao: "Rebound Slam Lo AC+ Inf",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "299,99",
+  rating: ""
+},
+{
+  code: "401480",
+  descricao: "Carina 3.0 V Inf",
+  tipo: "Kids",
+  genero: "Female",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "402283",
+  descricao: "Carina 3.0 Holo 2.0 V Inf",
+  tipo: "Kids",
+  genero: "Female",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "409385",
+  descricao: "Carina 3.0 Metallic Denim V Inf",
+  tipo: "Kids",
+  genero: "Female",
+  pdv: "329,99",
+  rating: ""
+},
+{
+  code: "387671",
+  descricao: "X-Ray AC Inf BDP",
+  tipo: "Kids",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109565",
+  descricao: "ULTRA 7 PLAY FG/AG",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109570",
+  descricao: "ULTRA 7 PLAY TT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109567",
+  descricao: "ULTRA 7 PLAY IT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109580",
+  descricao: "ULTRA 7 PLAY V TT Jr",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109576",
+  descricao: "ULTRA 7 PLAY IT Jr",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109577",
+  descricao: "ULTRA 7 PLAY TT Jr",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109409",
+  descricao: "FUTURE 10 ULTIMATE FG",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "2099,99",
+  rating: ""
+},
+{
+  code: "109882",
+  descricao: "FUTURE 10 MATCH FG/AG",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "699,99",
+  rating: ""
+},
+{
+  code: "109883",
+  descricao: "FUTURE 10 MATCH IT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "699,99",
+  rating: ""
+},
+{
+  code: "109884",
+  descricao: "FUTURE 10 MATCH TT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "699,99",
+  rating: ""
+},
+{
+  code: "109885",
+  descricao: "FUTURE 10 PLAY FG/AG",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109886",
+  descricao: "FUTURE 10 PLAY IT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109887",
+  descricao: "FUTURE 10 PLAY TT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "449,99",
+  rating: ""
+},
+{
+  code: "109888",
+  descricao: "FUTURE 10 PLAY IT Jr",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109889",
+  descricao: "FUTURE 10 PLAY TT Jr",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109890",
+  descricao: "FUTURE 10 PLAY IT V PS BDP",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109891",
+  descricao: "FUTURE 10 PLAY TT V PS BDP",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "399,99",
+  rating: ""
+},
+{
+  code: "109552",
+  descricao: "ULTRA NITRO 7 MATCH FG/AG",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "109557",
+  descricao: "ULTRA NITRO 7 MATCH TT",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "106455",
+  descricao: "King FG BDP",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "599,99",
+  rating: ""
+},
+{
+  code: "106456",
+  descricao: "King TT BDP",
+  tipo: "Football",
+  genero: "Unisex",
+  pdv: "599,99",
+  rating: ""
+},
+{
+  code: "306342",
+  descricao: "Ferrari Rebound Slam Lo",
+  tipo: "Motorsport",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "309521",
+  descricao: "Ferrari Caven III",
+  tipo: "Motorsport",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "309556",
+  descricao: "AMF1 Caven III",
+  tipo: "Motorsport",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "309567",
+  descricao: "BMW MMS Caven III",
+  tipo: "Motorsport",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+},
+{
+  code: "309549",
+  descricao: "McLaren Caven III",
+  tipo: "Motorsport",
+  genero: "Unisex",
+  pdv: "649,99",
+  rating: ""
+}
+]);
   // =====================================
   // URL DO BACKEND ONLINE
   // =====================================
