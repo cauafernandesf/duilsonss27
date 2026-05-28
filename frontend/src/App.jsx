@@ -1002,15 +1002,10 @@ useEffect(() => {
 
     setSending(true);
 
-    setStatus("Validando informações...");
 
-    setTimeout(() => {
-      setStatus("Gerando documentos...");
-    }, 1000);
-
-    setTimeout(() => {
-      setStatus("Enviando formulário...");
-    }, 2500);
+setStatus(
+  "⏳ Processando sua solicitação. Aguarde alguns segundos..."
+);
 
     await axios.post(
       `${API_URL}/send-email`,
@@ -1020,8 +1015,9 @@ useEffect(() => {
       }
     );
 
-    setStatus("✅ Formulário enviado com sucesso!");
-
+setStatus(
+  "✅ Sortimento enviado com sucesso! Uma cópia foi enviada para o seu e-mail."
+);
     setTimeout(() => {
       setStatus("");
     }, 3000);
