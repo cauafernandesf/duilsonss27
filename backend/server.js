@@ -300,7 +300,7 @@ app.post("/send-email", async (req, res) => {
         "marcelo.pumamg@gmail.com"
      ],
 
-      subject: `SORTIMENTO DUILSON SS27 - ${customerData.cnpj}`,
+      subject: `SORTIMENTO PUMA - DUILSON SS27 - ${customerData.cnpj}`,
 
       text: `
 RAZÃO SOCIAL: ${customerData.razaoSocial}
