@@ -1,11 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import ExcelJS from "exceljs";
 import PDFDocument from "pdfkit";
 
 dotenv.config();
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
 
@@ -278,36 +280,12 @@ app.post("/send-email", async (req, res) => {
     });
 
     // =========================
-    // EMAIL
+    // EMAIL RESEND
     // =========================
 
-    const transporter = nodemailer.createTransport({
+    await resend.emails.send({
 
-      host: "smtp.gmail.com",
-
-      port: 587,
-
-      secure: false,
-
-      auth: {
-
-        user: process.env.EMAIL_USER,
-
-        pass: process.env.EMAIL_PASS
-
-      },
-
-      connectionTimeout: 10000,
-
-      greetingTimeout: 10000,
-
-      socketTimeout: 10000
-
-    });
-
-    await transporter.sendMail({
-
-      from: process.env.EMAIL_USER,
+      from: "onboarding@resend.dev",
 
       to: [
         customerData.email,
@@ -335,12 +313,12 @@ Segue em anexo o sortimento selecionado.
 
         {
           filename: "sortimento.xlsx",
-          content: excelBuffer
+          content: Buffer.from(excelBuffer).toString("base64")
         },
 
         {
           filename: "sortimento.pdf",
-          content: pdfBuffer
+          content: Buffer.from(pdfBuffer).toString("base64")
         }
 
       ]
