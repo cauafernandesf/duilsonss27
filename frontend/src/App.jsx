@@ -846,6 +846,15 @@ const [products, setProducts] = useState(() => {
 
 };
 
+useEffect(() => {
+
+  localStorage.setItem(
+    "puma-products",
+    JSON.stringify(products)
+  );
+
+}, [products]);
+
   const filteredProducts = products.filter((product) => {
 
     return (
