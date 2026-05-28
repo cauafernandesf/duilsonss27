@@ -36,8 +36,7 @@ export default function App() {
   // URL DO BACKEND ONLINE
   // =====================================
 
-  const API_URL = "https://SEU-BACKEND.up.railway.app";
-
+const API_URL = "https://duilsonss27.onrender.com";
   const formatCNPJ = (value) => {
 
     value = value.replace(/\D/g, "");
