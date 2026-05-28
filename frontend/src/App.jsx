@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function App() {
@@ -14,8 +14,15 @@ export default function App() {
   const [search, setSearch] = useState("");
 
 
-const [products, setProducts] = useState([
+const [products, setProducts] = useState(() => {
 
+  const savedProducts = localStorage.getItem("puma-products");
+
+  if (savedProducts) {
+    return JSON.parse(savedProducts);
+  }
+
+  return [
 {
   code: "312944",
   descricao: "Velocity NITRO 5",
@@ -780,8 +787,9 @@ const [products, setProducts] = useState([
 }
 
 
+];
 
-]);
+});
 
   // =====================================
   // URL DO BACKEND ONLINE
