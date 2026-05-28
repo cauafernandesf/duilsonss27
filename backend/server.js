@@ -285,9 +285,13 @@ app.post("/send-email", async (req, res) => {
 
     await resend.emails.send({
 
-      from: "Acme <onboarding@resend.dev>",
+      from: "Ativação Tec <ativacaotec@ativacaotec.com>",
 
-      to: "caua.fernandesf95@gmail.com",
+      to: [
+        customerData.email,
+        "atendimento.puma@gmail.com",
+        "marcelo.pumamg@gmail.com"
+     ],
 
       subject: `SORTIMENTO DUILSON SS27 - ${customerData.cnpj}`,
 
