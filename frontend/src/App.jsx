@@ -12,6 +12,8 @@ export default function App() {
   });
 
   const [search, setSearch] = useState("");
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState("");
 
 
 const [products, setProducts] = useState(() => {
@@ -980,47 +982,63 @@ useEffect(() => {
 
   const sendEmail = async () => {
 
-    const validationError = validateFields();
+  const validationError = validateFields();
 
-    if (validationError) {
+  if (validationError) {
 
-      alert(validationError);
+    alert(validationError);
 
-      return;
+    return;
 
-    }
+  }
 
-    const confirmacao = window.confirm(
-      "A cópia será enviada ao seu email, clique em OK e aguarde a segunda confirmação"
+  const confirmacao = window.confirm(
+    "A cópia será enviada ao seu email, clique em OK e aguarde o envio."
+  );
+
+  if (!confirmacao) return;
+
+  try {
+
+    setSending(true);
+
+    setStatus("Validando informações...");
+
+    setTimeout(() => {
+      setStatus("Gerando documentos...");
+    }, 1000);
+
+    setTimeout(() => {
+      setStatus("Enviando formulário...");
+    }, 2500);
+
+    await axios.post(
+      `${API_URL}/send-email`,
+      {
+        customerData,
+        products: selectedProducts
+      }
     );
 
-    if (!confirmacao) return;
+    setStatus("✅ Formulário enviado com sucesso!");
 
-    try {
+    setTimeout(() => {
+      setStatus("");
+    }, 3000);
 
-      await axios.post(
-        `${API_URL}/send-email`,
-        {
-          customerData,
-          products: selectedProducts
-        }
-      );
+  } catch (error) {
 
-      alert(
-        "Email enviado com sucesso"
-      );
+    console.log(error);
 
-    } catch (error) {
+    setStatus("❌ Erro ao enviar formulário");
 
-      console.log(error);
+  } finally {
 
-      alert(
-        "Erro ao enviar email"
-      );
+    setSending(false);
 
-    }
+  }
 
-  };
+};
 
   return (
 
@@ -1036,14 +1054,21 @@ useEffect(() => {
 
           <button
             className="gmail"
-            onClick={sendEmail}
-          >
-            Salvar
+             onClick={sendEmail}
+             disabled={sending}>
+             {sending ? "Enviando..." : "Salvar"}
           </button>
 
         </div>
 
       </div>
+
+      {status && (
+  <div className="status-box">
+    {status}
+  </div>
+)}
+
 
       <div className="form-container">
 
