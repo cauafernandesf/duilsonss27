@@ -250,7 +250,7 @@ input[type="checkbox"]{
     border-radius:16px;
     padding:20px;
     border:1px solid #eee;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    box-shadow:0 4px 12px rgba(0,0,0,0.18);
   }
 
   td{
