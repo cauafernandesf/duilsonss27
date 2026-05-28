@@ -817,15 +817,26 @@ const [products, setProducts] = useState([
 
   };
 
-  const updateRating = (index, value) => {
+  const updateRating = (productCode, value) => {
 
-    const updated = [...products];
+  const updated = products.map((product) => {
 
-    updated[index].rating = value;
+    if (product.code === productCode) {
 
-    setProducts(updated);
+      return {
+        ...product,
+        rating: product.rating === value ? "" : value
+      };
 
-  };
+    }
+
+    return product;
+
+  });
+
+  setProducts(updated);
+
+};
 
   const filteredProducts = products.filter((product) => {
 
@@ -1105,9 +1116,9 @@ const [products, setProducts] = useState([
 
           <tbody>
 
-            {filteredProducts.map((product, index) => (
+            {filteredProducts.map((product) => (
 
-              <tr key={index}>
+              <tr key={product.code}>
 
                 <td data-label="Código">
                   {product.code}
@@ -1132,40 +1143,40 @@ const [products, setProducts] = useState([
                 <td data-label="Gostei">
 
                   <input
-                    type="checkbox"
-                    checked={product.rating === "Gostei"}
-                    onChange={() =>
-                      updateRating(index, "Gostei")
-                    }
-                  />
+  type="checkbox"
+  checked={product.rating === "Gostei"}
+  onChange={() =>
+    updateRating(product.code, "Gostei")
+  }
+/>
 
-                </td>
+</td>
 
-                <td data-label="Talvez">
+<td data-label="Talvez">
 
-                  <input
-                    type="checkbox"
-                    checked={product.rating === "Talvez"}
-                    onChange={() =>
-                      updateRating(index, "Talvez")
-                    }
-                  />
+  <input
+    type="checkbox"
+    checked={product.rating === "Talvez"}
+    onChange={() =>
+      updateRating(product.code, "Talvez")
+    }
+  />
 
-                </td>
+</td>
 
-                <td data-label="Não gostei">
+<td data-label="Não gostei">
 
-                  <input
-                    type="checkbox"
-                    checked={product.rating === "Não gostei"}
-                    onChange={() =>
-                      updateRating(index, "Não gostei")
-                    }
-                  />
+  <input
+    type="checkbox"
+    checked={product.rating === "Não gostei"}
+    onChange={() =>
+      updateRating(product.code, "Não gostei")
+    }
+  />
 
-                </td>
+</td>
 
-              </tr>
+</tr>
 
             ))}
 
