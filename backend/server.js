@@ -19,7 +19,9 @@ app.use(cors({
   allowedHeaders: ["Content-Type"]
 }));
 
-app.use(express.json());
+app.use(express.json({
+  limit: "50mb"
+}));
 
 // =====================================
 // HEALTH CHECK
@@ -281,7 +283,11 @@ app.post("/send-email", async (req, res) => {
 
     const transporter = nodemailer.createTransport({
 
-      service: "gmail",
+      host: "smtp.gmail.com",
+
+      port: 465,
+
+      secure: true,
 
       auth: {
 
@@ -289,7 +295,13 @@ app.post("/send-email", async (req, res) => {
 
         pass: process.env.EMAIL_PASS
 
-      }
+      },
+
+      connectionTimeout: 10000,
+
+      greetingTimeout: 10000,
+
+      socketTimeout: 10000
 
     });
 
