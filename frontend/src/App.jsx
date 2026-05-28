@@ -90,6 +90,10 @@ export default function App() {
 
   });
 
+  const selectedProducts = products.filter(
+    (product) => product.rating !== ""
+  );
+
   // =========================
   // VALIDAR CAMPOS
   // =========================
@@ -137,7 +141,7 @@ export default function App() {
         `${API_URL}/generate-excel`,
         {
           customerData,
-          products
+          products: selectedProducts
         }
       );
 
@@ -175,7 +179,7 @@ export default function App() {
         `${API_URL}/generate-pdf`,
         {
           customerData,
-          products
+          products: selectedProducts
         }
       );
 
@@ -219,7 +223,7 @@ export default function App() {
         `${API_URL}/send-email`,
         {
           customerData,
-          products
+          products: selectedProducts
         }
       );
 
