@@ -1020,7 +1020,7 @@ setStatus(
 );
     setTimeout(() => {
       setStatus("");
-    }, 6000);
+    }, 3000);
 
   } catch (error) {
 
