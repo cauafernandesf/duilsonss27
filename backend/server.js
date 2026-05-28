@@ -285,9 +285,9 @@ app.post("/send-email", async (req, res) => {
 
       host: "smtp.gmail.com",
 
-      port: 465,
+      port: 587,
 
-      secure: true,
+      secure: false,
 
       auth: {
 
