@@ -36,7 +36,8 @@ export default function App() {
   // URL DO BACKEND ONLINE
   // =====================================
 
-const API_URL = "https://duilsonss27.onrender.com";
+  const API_URL = "https://duilsonss27.onrender.com";
+
   const formatCNPJ = (value) => {
 
     value = value.replace(/\D/g, "");
@@ -326,84 +327,98 @@ const API_URL = "https://duilsonss27.onrender.com";
         }
       />
 
-      <table>
+      <div className="table-container">
 
-        <thead>
+        <table>
 
-          <tr>
+          <thead>
 
-            <th>Código</th>
-            <th>Descrição</th>
-            <th>Tipo</th>
-            <th>Gênero</th>
-            <th>PDV</th>
-            <th>Gostei</th>
-            <th>Talvez</th>
-            <th>Não gostei</th>
+            <tr>
 
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {filteredProducts.map((product, index) => (
-
-            <tr key={index}>
-
-              <td>{product.code}</td>
-
-              <td>{product.descricao}</td>
-
-              <td>{product.tipo}</td>
-
-              <td>{product.genero}</td>
-
-              <td>{product.pdv}</td>
-
-              <td>
-
-                <input
-                  type="checkbox"
-                  checked={product.rating === "Gostei"}
-                  onChange={() =>
-                    updateRating(index, "Gostei")
-                  }
-                />
-
-              </td>
-
-              <td>
-
-                <input
-                  type="checkbox"
-                  checked={product.rating === "Talvez"}
-                  onChange={() =>
-                    updateRating(index, "Talvez")
-                  }
-                />
-
-              </td>
-
-              <td>
-
-                <input
-                  type="checkbox"
-                  checked={product.rating === "Não gostei"}
-                  onChange={() =>
-                    updateRating(index, "Não gostei")
-                  }
-                />
-
-              </td>
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Tipo</th>
+              <th>Gênero</th>
+              <th>PDV</th>
+              <th>Gostei</th>
+              <th>Talvez</th>
+              <th>Não gostei</th>
 
             </tr>
 
-          ))}
+          </thead>
 
-        </tbody>
+          <tbody>
 
-      </table>
+            {filteredProducts.map((product, index) => (
+
+              <tr key={index}>
+
+                <td data-label="Código">
+                  {product.code}
+                </td>
+
+                <td data-label="Descrição">
+                  {product.descricao}
+                </td>
+
+                <td data-label="Tipo">
+                  {product.tipo}
+                </td>
+
+                <td data-label="Gênero">
+                  {product.genero}
+                </td>
+
+                <td data-label="PDV">
+                  {product.pdv}
+                </td>
+
+                <td data-label="Gostei">
+
+                  <input
+                    type="checkbox"
+                    checked={product.rating === "Gostei"}
+                    onChange={() =>
+                      updateRating(index, "Gostei")
+                    }
+                  />
+
+                </td>
+
+                <td data-label="Talvez">
+
+                  <input
+                    type="checkbox"
+                    checked={product.rating === "Talvez"}
+                    onChange={() =>
+                      updateRating(index, "Talvez")
+                    }
+                  />
+
+                </td>
+
+                <td data-label="Não gostei">
+
+                  <input
+                    type="checkbox"
+                    checked={product.rating === "Não gostei"}
+                    onChange={() =>
+                      updateRating(index, "Não gostei")
+                    }
+                  />
+
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
