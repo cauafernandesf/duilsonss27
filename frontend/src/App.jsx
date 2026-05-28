@@ -89,7 +89,6 @@ const [products, setProducts] = useState(() => {
 { code: "314350 16", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
 { code: "314350 18", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
 { code: "314350 50", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
-{ code: "314350 01", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
 { code: "314350 04", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
 { code: "314350 30", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
 { code: "314350 32", descricao: "Dasher Lite Wns BDP", tipo: "Running", genero: "Feminino", pdv: "399,99", rating: "" },
