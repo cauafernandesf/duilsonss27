@@ -841,9 +841,10 @@ setStatus(
 
           <tbody>
 
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product, index) => (
 
-              <tr key={product.code}>
+
+              <tr key={`${product.code}-${index}`}>
 
                 <td data-label="Código">
                   {product.code}
