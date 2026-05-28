@@ -44,6 +44,9 @@ app.post("/generate-files", async (req, res) => {
   try {
 
     const { customerData, products } = req.body;
+    const filteredProducts = products.filter(
+     (product) => product.rating !== ""
+    );
 
     // =========================
     // EXCEL EM MEMÓRIA
@@ -69,7 +72,7 @@ app.post("/generate-files", async (req, res) => {
 
     ];
 
-    products.forEach((product) => {
+    filteredProducts.forEach((product) => {
 
       sheet.addRow(product);
 
@@ -130,7 +133,7 @@ app.post("/generate-files", async (req, res) => {
 
       doc.moveDown();
 
-      products.forEach((product) => {
+      filteredProducts.forEach((product) => {
 
         doc
           .fontSize(11)
@@ -178,6 +181,10 @@ app.post("/send-email", async (req, res) => {
       products
     } = req.body;
 
+    const filteredProducts = products.filter(
+  (product) => product.rating !== ""
+);
+
     // =========================
     // EXCEL EM MEMÓRIA
     // =========================
@@ -202,7 +209,7 @@ app.post("/send-email", async (req, res) => {
 
     ];
 
-    products.forEach((product) => {
+    filteredProducts.forEach((product) => {
 
       sheet.addRow(product);
 
@@ -263,7 +270,7 @@ app.post("/send-email", async (req, res) => {
 
       doc.moveDown();
 
-      products.forEach((product) => {
+      filteredProducts.forEach((product) => {
 
         doc
           .fontSize(11)
