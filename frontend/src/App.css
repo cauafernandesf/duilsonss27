@@ -138,7 +138,7 @@ thead{
 
 th{
   padding:16px;
-  font-size:14px;
+  font-size:16px;
   white-space:nowrap;
 }
 
@@ -146,7 +146,7 @@ td{
   padding:14px;
   text-align:center;
   border-bottom:1px solid #eee;
-  font-size:14px;
+  font-size:16px;
 }
 
 tbody tr:hover{
