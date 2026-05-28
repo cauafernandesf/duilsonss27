@@ -285,7 +285,7 @@ app.post("/send-email", async (req, res) => {
 
     await resend.emails.send({
 
-      from: "onboarding@resend.dev",
+      from: "Acme <onboarding@resend.dev>",
 
       to: [
         customerData.email,
