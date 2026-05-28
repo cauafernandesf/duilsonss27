@@ -331,7 +331,10 @@ Segue em anexo o sortimento selecionado.
 
   } catch (error) {
 
+    console.log("ERRO RESEND:");
     console.log(error);
+    console.log(error.message);
+    console.log(error.response);
 
     res.status(500).json({
       success: false,
